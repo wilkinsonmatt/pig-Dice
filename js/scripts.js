@@ -50,11 +50,10 @@ function roll(playerid) {
   score = rollTheDice();
   if (score === 1) {
     currentgame.players[playerid].tempscore = 0;
-    return false;
+    hold(playerid);
   } else {
     currentgame.players[playerid].tempscore += score;
     Scoreboard();
-    return true;
   }
 }
 
@@ -64,9 +63,13 @@ function hold(playerid) {
   console.log(currentgame.players[playerid].playerNumber);
   Scoreboard();
   if (currentgame.players[playerid].totalscore >= 100) {
-    //win game
+    alert("you are the winner! =D");
+  } else if (currentgame.turn === 3) {
+    alert("your turn is over, please pass the mouse!");
+    currentgame.turn = 0;
   } else {
-    ///next players turn
+    alert("your turn is over, please pass the mouse!");
+    currentgame.turn + 1;
   }
 }
 
@@ -82,11 +85,11 @@ $(document).ready(function () {
 
   $("form#roll").click(function (event) {
     event.preventDefault();
-    roll(0);
+    roll(currentgame.turn);
   });
 
   $("form#hold").click(function (event) {
     event.preventDefault();
-    hold(0);
+    hold(currentgame.turn);
   });
 });
