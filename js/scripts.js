@@ -12,6 +12,7 @@ Game.prototype.AddPlayers = function () {
     console.log(i);
     let newplayer = new Player(i);
     currentgame.players.push(newplayer);
+    currentgame.players;
   }
 };
 
@@ -27,18 +28,21 @@ function rollTheDice() {
   return diceroll;
 }
 
-function tempscore() {
-  $(".tempScore1").html(currentgame.players[0].tempscore);
-  $(".tempScore2").html(currentgame.players[1].tempscore);
-  $(".tempScore3").html(currentgame.players[2].tempscore);
-  $(".tempScore4").html(currentgame.players[3].tempscore);
-}
-
-function totalscore() {
-  $(".totalScore1").html(currentgame.players[0].totalscore);
-  $(".totalScore2").html(currentgame.players[1].totalscore);
-  $(".totalScore3").html(currentgame.players[2].totalscore);
-  $(".totalScore4").html(currentgame.players[3].totalscore);
+function Scoreboard() {
+  console.log(currentgame.numberOfPlayers);
+  if (currentgame.numberOfPlayers === 1) {
+    $(".tempScore1").html(currentgame.players[0].tempscore);
+    $(".totalScore1").html(currentgame.players[0].totalscore);
+  } else if (currentgame.numberOfPlayers === 2) {
+    $(".tempScore2").html(currentgame.players[1].tempscore);
+    $(".totalScore2").html(currentgame.players[1].totalscore);
+  } else if (currentgame.numberOfPlayers === 3) {
+    $(".tempScore3").html(currentgame.players[2].tempscore);
+    $(".totalScore3").html(currentgame.players[2].totalscore);
+  } else if (currentgame.numberOfPlayers === 4) {
+    $(".tempScore4").html(currentgame.players[3].tempscore);
+    $(".totalScore4").html(currentgame.players[3].totalscore);
+  }
 }
 
 function roll(playerid) {
@@ -49,7 +53,7 @@ function roll(playerid) {
     return false;
   } else {
     currentgame.players[playerid].tempscore += score;
-    tempscore();
+    Scoreboard();
     return true;
   }
 }
@@ -58,7 +62,12 @@ function hold(playerid) {
   currentgame.players[playerid].totalscore +=
     currentgame.players[playerid].tempscore;
   console.log(currentgame.players[playerid].playerNumber);
-  totalscore();
+  Scoreboard();
+  if (currentgame.players[playerid].totalscore >= 100) {
+    //win game
+  } else {
+    ///next players turn
+  }
 }
 
 $(document).ready(function () {
@@ -69,13 +78,11 @@ $(document).ready(function () {
     );
     currentgame = new Game(numberofPlayers);
     currentgame.AddPlayers();
-    console.log(currentgame.players[0].playerNumber);
   });
 
   $("form#roll").click(function (event) {
     event.preventDefault();
     roll(0);
-    //check if 100
   });
 
   $("form#hold").click(function (event) {
