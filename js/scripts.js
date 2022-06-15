@@ -29,17 +29,29 @@ function rollTheDice() {
 }
 
 function Scoreboard() {
-  console.log(currentgame.numberOfPlayers);
+  console.log("number of players: " + currentgame.numberOfPlayers);
   if (currentgame.numberOfPlayers === 1) {
     $(".tempScore1").html(currentgame.players[0].tempscore);
     $(".totalScore1").html(currentgame.players[0].totalscore);
   } else if (currentgame.numberOfPlayers === 2) {
+    $(".tempScore1").html(currentgame.players[0].tempscore);
+    $(".totalScore1").html(currentgame.players[0].totalscore);
     $(".tempScore2").html(currentgame.players[1].tempscore);
     $(".totalScore2").html(currentgame.players[1].totalscore);
   } else if (currentgame.numberOfPlayers === 3) {
+    $(".tempScore1").html(currentgame.players[0].tempscore);
+    $(".totalScore1").html(currentgame.players[0].totalscore);
+    $(".tempScore2").html(currentgame.players[1].tempscore);
+    $(".totalScore2").html(currentgame.players[1].totalscore);
     $(".tempScore3").html(currentgame.players[2].tempscore);
     $(".totalScore3").html(currentgame.players[2].totalscore);
   } else if (currentgame.numberOfPlayers === 4) {
+    $(".tempScore1").html(currentgame.players[0].tempscore);
+    $(".totalScore1").html(currentgame.players[0].totalscore);
+    $(".tempScore2").html(currentgame.players[1].tempscore);
+    $(".totalScore2").html(currentgame.players[1].totalscore);
+    $(".tempScore3").html(currentgame.players[2].tempscore);
+    $(".totalScore3").html(currentgame.players[2].totalscore);
     $(".tempScore4").html(currentgame.players[3].tempscore);
     $(".totalScore4").html(currentgame.players[3].totalscore);
   }
@@ -62,15 +74,17 @@ function hold(playerid) {
     currentgame.players[playerid].tempscore;
   console.log(currentgame.players[playerid].playerNumber);
   Scoreboard();
+  console.log("it's currently this players turn: " + currentgame.turn);
   if (currentgame.players[playerid].totalscore >= 100) {
     alert("you are the winner! =D");
-  } else if (currentgame.turn === 3) {
+  } else if (currentgame.turn === currentgame.numberOfPlayers) {
     alert("your turn is over, please pass the mouse!");
     currentgame.turn = 0;
   } else {
     alert("your turn is over, please pass the mouse!");
-    currentgame.turn + 1;
+    currentgame.turn += 1;
   }
+  console.log("it's now this player's turn: " + currentgame.turn);
 }
 
 $(document).ready(function () {
