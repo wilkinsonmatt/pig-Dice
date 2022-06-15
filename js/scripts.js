@@ -8,7 +8,8 @@ let currentgame;
 
 Game.prototype.AddPlayers = function () {
   console.log("hi");
-  for (let i = 0; i <= currentgame.numberOfPlayers; i++) {
+  for (let i = 0; i < currentgame.numberOfPlayers; i++) {
+    console.log(i);
     let newplayer = new Player(i);
     currentgame.players.push(newplayer);
   }
@@ -26,6 +27,20 @@ function rollTheDice() {
   return diceroll;
 }
 
+function tempscore() {
+  $(".tempScore1").html(currentgame.players[0].tempscore);
+  $(".tempScore2").html(currentgame.players[1].tempscore);
+  $(".tempScore3").html(currentgame.players[2].tempscore);
+  $(".tempScore4").html(currentgame.players[3].tempscore);
+}
+
+function totalscore() {
+  $(".totalScore1").html(currentgame.players[0].totalscore);
+  $(".totalScore2").html(currentgame.players[1].totalscore);
+  $(".totalScore3").html(currentgame.players[2].totalscore);
+  $(".totalScore4").html(currentgame.players[3].totalscore);
+}
+
 function roll(playerid) {
   let score = 0;
   score = rollTheDice();
@@ -34,7 +49,7 @@ function roll(playerid) {
     return false;
   } else {
     currentgame.players[playerid].tempscore += score;
-    $(".tempScore").html(currentgame.players[playerid].tempscore);
+    tempscore();
     return true;
   }
 }
@@ -42,7 +57,8 @@ function roll(playerid) {
 function hold(playerid) {
   currentgame.players[playerid].totalscore +=
     currentgame.players[playerid].tempscore;
-  $(".totalScore").html(currentgame.players[playerid].totalscore);
+  console.log(currentgame.players[playerid].playerNumber);
+  totalscore();
 }
 
 $(document).ready(function () {
@@ -59,6 +75,7 @@ $(document).ready(function () {
   $("form#roll").click(function (event) {
     event.preventDefault();
     roll(0);
+    //check if 100
   });
 
   $("form#hold").click(function (event) {
