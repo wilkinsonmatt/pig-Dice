@@ -12,7 +12,7 @@ Game.prototype.AddPlayers = function () {
     let newplayer = new Player(i);
     currentgame.players.push(newplayer);
   }
-}
+};
 
 function Player(playerid) {
   this.totalscore = 0;
@@ -20,6 +20,9 @@ function Player(playerid) {
   this.playerNumber = playerid;
 }
 
+function rollTheDice() {
+  return Math.floor(1 + Math.random() * 6);
+}
 
 $(document).ready(function () {
   $("form#pigForm").submit(function (event) {
@@ -30,7 +33,5 @@ $(document).ready(function () {
     currentgame = new Game(numberofPlayers);
     currentgame.AddPlayers();
     console.log(currentgame.players[0].playerNumber);
-
-
   });
 });
