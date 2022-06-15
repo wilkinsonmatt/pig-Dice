@@ -12,7 +12,7 @@ Game.prototype.AddPlayers = function () {
     let newplayer = new Player(i);
     currentgame.players.push(newplayer);
   }
-};
+}
 
 function Player(playerid) {
   this.totalscore = 0;
