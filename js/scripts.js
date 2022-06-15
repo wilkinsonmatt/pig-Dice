@@ -16,12 +16,33 @@ Game.prototype.AddPlayers = function () {
 
 function Player(playerid) {
   this.totalscore = 0;
-  this.tempscore = 45;
+  this.tempscore = 0;
   this.playerNumber = playerid;
 }
 
 function rollTheDice() {
-  return Math.floor(1 + Math.random() * 6);
+  let diceroll = Math.floor(1 + Math.random() * 6);
+  $(".diceRoll").html(diceroll);
+  return diceroll;
+}
+
+function roll(playerid) {
+  let score = 0;
+  score = rollTheDice();
+  if (score === 1) {
+    currentgame.players[playerid].tempscore = 0;
+    return false;
+  } else {
+    currentgame.players[playerid].tempscore += score;
+    $(".tempScore").html(currentgame.players[playerid].tempscore);
+    return true;
+  }
+}
+
+function hold(playerid) {
+  currentgame.players[playerid].totalscore +=
+    currentgame.players[playerid].tempscore;
+  $(".totalScore").html(currentgame.players[playerid].totalscore);
 }
 
 $(document).ready(function () {
@@ -33,5 +54,15 @@ $(document).ready(function () {
     currentgame = new Game(numberofPlayers);
     currentgame.AddPlayers();
     console.log(currentgame.players[0].playerNumber);
+  });
+
+  $("form#roll").click(function (event) {
+    event.preventDefault();
+    roll(0);
+  });
+
+  $("form#hold").click(function (event) {
+    event.preventDefault();
+    hold(0);
   });
 });
