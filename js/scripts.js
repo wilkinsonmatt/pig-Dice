@@ -23,16 +23,22 @@ function Player(playerid) {
 
 function rollTheDice() {
   let diceroll = Math.floor(1 + Math.random() * 6);
-  $(".diceRoll").html(diceroll);
+  $(".diceRoll").html("Dice Roll: " + diceroll);
   return diceroll;
 }
 
 function roll2Dice() {
   let diceroll1 = Math.floor(1 + Math.random() * 6);
   let diceroll2 = Math.floor(1 + Math.random() * 6);
-  let showdice = toString(diceroll1) + " " + toString(diceroll2);
+  let showdice =
+    "Dice One: " +
+    diceroll1.toString() +
+    "<br><br>" +
+    "Dice Two:  " +
+    diceroll2.toString();
   let arrayofbothdice = [diceroll1, diceroll2];
   $(".diceRoll").html(showdice);
+  console.log(arrayofbothdice);
   return arrayofbothdice;
 }
 
@@ -78,10 +84,12 @@ function roll1(playerid) {
 }
 
 function roll2(playerid) {
-  let score = 0;
-  score = rollTheDice();
+  let arrayofbothdice = roll2Dice();
+  let dice1 = arrayofbothdice[0];
+  let dice2 = arrayofbothdice[1];
+  let score = dice1 + dice2;
 
-  if (score === 1) {
+  if (dice1 === 1 || dice2 === 1) {
     currentgame.players[playerid].tempscore = 0;
     hold(playerid);
   } else {
