@@ -27,6 +27,15 @@ function rollTheDice() {
   return diceroll;
 }
 
+function roll2Dice() {
+  let diceroll1 = Math.floor(1 + Math.random() * 6);
+  let diceroll2 = Math.floor(1 + Math.random() * 6);
+  let showdice = toString(diceroll1) + " " + toString(diceroll2);
+  let arrayofbothdice = [diceroll1, diceroll2];
+  $(".diceRoll").html(showdice);
+  return arrayofbothdice;
+}
+
 function Scoreboard() {
   // console.log("number of players: " + currentgame.numberOfPlayers);
   if (currentgame.numberOfPlayers === 1) {
@@ -56,9 +65,22 @@ function Scoreboard() {
   }
 }
 
-function roll(playerid) {
+function roll1(playerid) {
   let score = 0;
   score = rollTheDice();
+  if (score === 1) {
+    currentgame.players[playerid].tempscore = 0;
+    hold(playerid);
+  } else {
+    currentgame.players[playerid].tempscore += score;
+    Scoreboard();
+  }
+}
+
+function roll2(playerid) {
+  let score = 0;
+  score = rollTheDice();
+
   if (score === 1) {
     currentgame.players[playerid].tempscore = 0;
     hold(playerid);
@@ -95,11 +117,20 @@ $(document).ready(function () {
     );
     currentgame = new Game(numberofPlayers);
     currentgame.AddPlayers();
+    $(".start-menu").hide();
+    $(".console").show();
   });
 
-  $("form#roll").click(function (event) {
+  $("form#dice1").click(function (event) {
     event.preventDefault();
-    roll(currentgame.turn);
+    document.getElementById("piggy").play();
+    roll1(currentgame.turn);
+  });
+
+  $("form#dice2").click(function (event) {
+    event.preventDefault();
+    document.getElementById("piggy").play();
+    roll2(currentgame.turn);
   });
 
   $("form#hold").click(function (event) {

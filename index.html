@@ -16,74 +16,108 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link href="css/styles.css" />
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <title>Pig Dice!</title>
   </head>
   <body>
     <div class="container">
+      <h1>🐷 Pig Dice 🐷</h1>
       <form id="pigForm">
-        <p>Choose number of players</p>
-        <div class="radio">
-          <label>
-            <input type="radio" name="player" value="1" checked />
-            1 Player
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="player" value="2" />
-            2 Players
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="player" value="3" />
-            3 Players
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="player" value="4" />
-            4 Players
-          </label>
-        </div>
-        <button type="submit" class="btn btn-dark">Play</button>
-      </form>
-      <form id="roll">
-        <button type="button" class="btn btn-dark">Roll</button>
-      </form>
-      <form id="hold">
-        <button type="button" class="btn btn-dark">Hold</button>
-      </form>
-      <h3>Dice Roll: <span class="diceRoll"></span></h3>
-
-      <div class="row">
-        <div class="col">
-          <div class="scoreboard1">
-            <p>Player0</p>
-            <p>Total Score: <span class="totalScore1"></span></p>
-            <p>Round Total: <span class="tempScore1"></span></p>
+        <div class="start-menu">
+          <img src="img/pigdice.png" alt="pig dice" id="pigDice" />
+          <h3>Choose number of players:</h3>
+          <div class="radio">
+            <label>
+              <input type="radio" name="player" value="1" checked />
+              1 Player 🐽
+            </label>
           </div>
-        </div>
-        <div class="col">
-          <div class="scoreboard2">
-            <p>Player1</p>
-            <p>Total Score: <span class="totalScore2"></span></p>
-            <p>Round Total: <span class="tempScore2"></span></p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="player" value="2" />
+              2 Players 🐽
+            </label>
           </div>
-        </div>
-        <div class="col">
-          <div class="scoreboard3">
-            <p>Player2</p>
-            <p>Total Score: <span class="totalScore3"></span></p>
-            <p>Round Total: <span class="tempScore3"></span></p>
+          <div class="radio">
+            <label>
+              <input type="radio" name="player" value="3" />
+              3 Players 🐽
+            </label>
           </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="player" value="4" />
+              4 Players 🐽
+            </label>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-dark">Play</button>
         </div>
-        <div class="col">
-          <div class="scoreboard4">
-            <p>Player3</p>
-            <p>Total Score: <span class="totalScore4"></span></p>
-            <p>Round Total: <span class="tempScore4"></span></p>
+      </form>
+      <div class="console">
+        <div class="buttons" style="display: flex; justify-content: flex-start">
+          <form id="dice1">
+            <div class="rollbutton">
+              <button type="button" class="btn btn-dark">Roll 1</button>
+            </div>
+          </form>
+          <form id="dice2">
+            <div class="rollbutton">
+              <button type="button" class="btn btn-dark">Roll 2</button>
+            </div>
+          </form>
+          <form id="hold">
+            <div class="holdbutton">
+              <button type="button" class="btn btn-dark">Hold</button>
+            </div>
+          </form>
+        </div>
+        <audio src="audio/pig.mp3" id="piggy" type="audio/mp3"></audio>
+        <h3>Dice Roll: <span class="diceRoll"></span></h3>
+        <div class="row">
+          <div class="col">
+            <div class="scoreboard1">
+              <div class="card">
+                <div class="card-body">
+                  <p><strong>Player ¹ 🐖</strong></p>
+                  <p>Total Score: <span class="totalScore1"></span></p>
+                  <p>Round Total: <span class="tempScore1"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="scoreboard2">
+              <div class="card">
+                <div class="card-body">
+                  <p><strong>Player ² 🐖</strong></p>
+                  <p>Total Score: <span class="totalScore2"></span></p>
+                  <p>Round Total: <span class="tempScore2"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="scoreboard3">
+                  <p><strong>Player ³ 🐖</strong></p>
+                  <p>Total Score: <span class="totalScore3"></span></p>
+                  <p>Round Total: <span class="tempScore3"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="scoreboard4">
+                  <p><strong>Player ⁴ 🐖</strong></p>
+                  <p>Total Score: <span class="totalScore4"></span></p>
+                  <p>Round Total: <span class="tempScore4"></span></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
