@@ -7,9 +7,8 @@ function Game(numberofPlayers) {
 let currentgame;
 
 Game.prototype.AddPlayers = function () {
-  console.log("hi");
   for (let i = 0; i < currentgame.numberOfPlayers; i++) {
-    console.log(i);
+    // console.log(i);
     let newplayer = new Player(i);
     currentgame.players.push(newplayer);
     currentgame.players;
@@ -29,7 +28,7 @@ function rollTheDice() {
 }
 
 function Scoreboard() {
-  console.log("number of players: " + currentgame.numberOfPlayers);
+  // console.log("number of players: " + currentgame.numberOfPlayers);
   if (currentgame.numberOfPlayers === 1) {
     $(".tempScore1").html(currentgame.players[0].tempscore);
     $(".totalScore1").html(currentgame.players[0].totalscore);
@@ -75,9 +74,10 @@ function hold(playerid) {
   console.log(currentgame.players[playerid].playerNumber);
   Scoreboard();
   console.log("it's currently this players turn: " + currentgame.turn);
+  console.log("there are this many players: " + currentgame.numberOfPlayers);
   if (currentgame.players[playerid].totalscore >= 100) {
     alert("you are the winner! =D");
-  } else if (currentgame.turn === currentgame.numberOfPlayers) {
+  } else if (currentgame.turn === currentgame.numberOfPlayers - 1) {
     alert("your turn is over, please pass the mouse!");
     currentgame.turn = 0;
   } else {
