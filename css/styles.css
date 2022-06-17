@@ -23,6 +23,12 @@ h3 {
   margin-top: 10px;
 }
 
+.console1 {
+  float: left;
+  text-align: left;
+}
+
+
 .card {
   box-shadow: rgba(0, 0, 0, 0.16) 4px 4px 4px;
 }
