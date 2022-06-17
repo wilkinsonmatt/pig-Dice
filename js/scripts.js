@@ -99,8 +99,8 @@ function roll2(playerid) {
 }
 
 function hold(playerid) {
-  currentgame.players[playerid].totalscore +=
-    currentgame.players[playerid].tempscore;
+  currentgame.players[playerid].totalscore += currentgame.players[playerid].tempscore;
+  currentgame.players[playerid].tempscore = 0;
   console.log(currentgame.players[playerid].playerNumber);
   Scoreboard();
   console.log("it's currently this players turn: " + currentgame.turn);
