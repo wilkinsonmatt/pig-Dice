@@ -32,7 +32,7 @@ function roll2Dice() {
   let showdice =
     "Dice One: " +
     diceroll1.toString() +
-    "<br><br>" +
+    "<br>" +
     "Dice Two:  " +
     diceroll2.toString();
   let arrayofbothdice = [diceroll1, diceroll2];
